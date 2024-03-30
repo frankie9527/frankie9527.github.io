@@ -1,7 +1,7 @@
 ---
 title: 找远程工作记录
 description: 自从深圳上班回到成都以后没有正确的职业规划，导致频繁在外包里面反复横跳，心累不已
-author: Frankie
+author: cotes
 date: 2024-03-28 03:59:00 +0800
 categories: [远程, 杂谈]
 tags: [杂谈]

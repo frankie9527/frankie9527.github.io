@@ -1,7 +1,7 @@
 ---
 title: mac 工具推荐
 description: 记录mac 上好用的工具
-author: Frankie
+author: cotes
 date: 2024-03-30 19:01:00 +0800
 categories: [工具, git]
 tags: [git]

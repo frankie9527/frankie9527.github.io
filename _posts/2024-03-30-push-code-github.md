@@ -1,7 +1,7 @@
 ---
 title: 提交代码到github
 description: 记录在mac 环境配置并提交代码到github
-author: Frankie
+author: cotes
 date: 2024-03-30 18:19:00 +0800
 categories: [工具, git]
 tags: [git]
