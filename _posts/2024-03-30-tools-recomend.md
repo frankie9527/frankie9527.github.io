@@ -7,7 +7,7 @@ categories: [工具, git]
 tags: [git]
 render_with_liquid: false
 ---
- 
+# tools
 - [LICEcap](https://www.cockos.com/licecap/) 录屏小工具，免费好用，windows和mac都好使
 - [vlc](https://www.videolan.org/) 视频播放的软件，可以用来测试视频地址
 - [jadx](https://github.com/skylot/jadx) 反编译工具，windows 和mac都可用
