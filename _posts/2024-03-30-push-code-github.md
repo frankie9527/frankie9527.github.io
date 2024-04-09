@@ -29,6 +29,7 @@ ssh-keygen -t rsa -C "jiangyuhan3730@gmail.com"
 ```
 cat ~/.ssh/id_rsa.pub
 ```
+
 ## 2、添加ssh
 - 进入github 界面 --> settings --> SSH and GPG keys
 - 点击new ssh
