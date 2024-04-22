@@ -53,13 +53,55 @@ render_with_liquid: false
 ### 2、进程间通信方式
 - aidl broadcast socket ContentProvider
 
-### 3、intentService
-- 初见intentService是在2016年看google 文档的android performance tips 里面说建议使用它，因为他可以shut down it self
-- 源码分析
+### 3、IntentService
+- 初见IntentService是在2016年看google 文档的android performance tips 里面说建议使用它，因为他可以shut down it self
+
+#### 使用如下
+```
+public class MyIntentService extends IntentService {
+    public MyIntentService(String name) {
+        super("MyIntentService");
+    }
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+        // do something
+    }
+}
+```
+
+#### 源码分析
+```
+For a detailed discussion about how to create services, read the Services developer guide.
+Deprecated
+IntentService is subject to all the background execution limits imposed with Android 8.0 (API level 26). Consider using androidx.work.WorkManager instead.
+See Also:
+androidx.core.app.JobIntentService
+@Deprecated
+public abstract class IntentService extends Service {
+    private final class ServiceHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            onHandleIntent((Intent)msg.obj);
+            stopSelf(msg.arg1);
+        }
+    }
+    @Override
+    public void onStart(@Nullable Intent intent, int startId) {
+        Message msg = mServiceHandler.obtainMessage();
+        msg.arg1 = startId;
+        msg.obj = intent;
+        mServiceHandler.sendMessage(msg);
+    }
+}
+```
+- 看代码很明显，自己写了一个handler 然后在当数据处理完成以后 stopSelf
 
 ### 4、android 事件传递
-
+- dispatchTouchEvent ：事件分发
+- onInterceptTouchEvent  ：返回true 则拦截事件
+- onTouchEvent  ： 返回true 则表示拦截该事件
 ### 5、handler 机制
+
 
 ### 6、mvp mvvm
 - mvp  ： model 数据处理， p 逻辑处理， v  视图。简要一点mvp是面向接口编程，每层都有对应都接口（该接口代表该层都行为），p层持有
@@ -67,3 +109,5 @@ view 和model 层都接口进行逻辑处理
 - mvvm ： 当前android 用databind 和viewModel 分层来进做mvvm。vm 和mvp都p 相似，因为用了databind和livedata 所以数据变化直接响应到了ui。更简洁
 
 ### 7、TextSurface和SurfaceView 区别
+- SurfaceView是一个有自己独立Surface的View, 它的渲染可以放在单独线程而不是主线程中, 其缺点是不能做变形和动画。
+- TextureView是一个可以把内容流作为外部纹理输出在上面的View, 它本身需要是一个硬件加速层
